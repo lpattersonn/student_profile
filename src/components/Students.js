@@ -1,5 +1,6 @@
 // Imports
 import React from "react";
+import "../Style/Students.css"
 
 // Student function for showing data from API
 export default function Student(props) {
@@ -17,7 +18,7 @@ export default function Student(props) {
     };
 
     return (
-      <article>
+      <article className="student_article">
         <section>
           <img src={student.pic} alt={student.firstName} />
         </section>
