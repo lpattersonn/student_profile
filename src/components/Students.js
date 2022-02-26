@@ -19,17 +19,19 @@ export default function Student(props) {
 
     return (
       <article className="student_article">
-        <section>
+        <section className="pic">
           <img src={student.pic} alt={student.firstName} />
         </section>
         <section>
-          <h1>
-            {student.firstName} {student.lastName}
+          <h1 className="student_name">
+            {student.firstName.toUpperCase()} {student.lastName.toUpperCase()}
           </h1>
+          <div className="student_info" >
           <p>Email: {student.email}</p>
           <p>Company: {student.company}</p>
           <p>Skill: {student.skill}</p>
           <p>Average: {studentGrades()}</p>
+          </div>
         </section>
       </article>
     );

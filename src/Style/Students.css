@@ -1,6 +1,43 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;700&display=swap');
+
 /* Style For Student.css */
 .student_article {
   border-bottom: 1px solid rgb(243, 243, 243);
   display: flex;
-    flex-direction: row;
+  flex-direction: row;
+}
+
+/* Images */
+img {
+  width: 132px;
+  height: 132px;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 50%;
+}
+
+.pic {
+  margin-top: 23px;
+  margin-left: 20px;
+  margin-right: 25px;
+}
+
+/* Student name */
+.student_name {
+  font-family: "Raleway", sans-serif;
+  font-size: 35px;
+  margin-top: 13px;
+  margin-bottom: -1px;
+}
+
+.student_info {
+  margin-bottom: 25px;
+  margin-left: 20px;
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+p {
+  margin-bottom: -8px;
 }

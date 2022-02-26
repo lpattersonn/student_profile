@@ -1,5 +1,9 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;700&display=swap');
+
 /* Main Body */
 body {
+  font-family: "Raleway";
   display: flex;
   justify-content: center;
   background-color: rgb(228, 227, 227);
