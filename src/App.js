@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Student from "./components/Students";
+import Input from "./components/Input";
 
 // App funciton
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div className="App">
+      <Input />
       <Student key={students.length} students={students} />
     </div>
   );
