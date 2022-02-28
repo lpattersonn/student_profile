@@ -8,6 +8,8 @@ import Input from "./components/Input";
 // App funciton
 function App() {
   const [students, setStudents] = useState([]);
+  const [filteredStudents, setfilteredStudents] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
   // Get data from api on every rerender using useEffect
   useEffect(() => {
@@ -21,8 +23,20 @@ function App() {
 
   return (
     <div className="App">
-      <Input />
-      <Student key={students.length} students={students} />
+      <Input
+        key={filteredStudents.length}
+        filteredStudents={filteredStudents}
+        setfilteredStudents={setfilteredStudents}
+        students={students}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
+      <Student
+        key={students.length}
+        students={students}
+        filteredStudents={filteredStudents}
+        inputValue={inputValue}
+      />
     </div>
   );
 }

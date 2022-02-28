@@ -6,7 +6,7 @@
   width: 100%;
   height: 39px;
   border: none;
-  border-bottom: 2px solid rgb(235, 235, 235);
+  border-bottom: 1.5px solid rgb(211, 211, 211);
   outline-style: none;
 }
 
@@ -17,7 +17,7 @@ input[type="text"]
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgb(202, 202, 202);
+  color: rgb(153, 153, 153);
   opacity: 1; /* Firefox */
 }
 
