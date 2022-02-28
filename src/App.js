@@ -24,7 +24,6 @@ function App() {
   return (
     <div className="App">
       <Input
-        key={filteredStudents.length}
         filteredStudents={filteredStudents}
         setfilteredStudents={setfilteredStudents}
         students={students}

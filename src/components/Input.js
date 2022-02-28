@@ -4,29 +4,37 @@ import "../Style/Input.css";
 
 // Input function
 export default function Input(props) {
-  const { students, filteredStudents, setfilteredStudents, inputValue, setInputValue  } = props;
+  const {
+    students,
+    filteredStudents,
+    setfilteredStudents,
+    inputValue,
+    setInputValue,
+  } = props;
 
   // Filter students
   const changeStudent = () => {
-     
+    if (inputValue.length === 0) {
+      setfilteredStudents([]);
+    }
     if (inputValue.length !== 0) {
+      let studentArray = [];
       for (let newStudent of students) {
         // loop through input value
         let studentName = newStudent.firstName + " " + newStudent.lastName;
         // match inputValue character with new student
-        if (
-          studentName.toLowerCase().includes(inputValue.toLowerCase())
-        ) {
-          setfilteredStudents([newStudent]);
-          console.log("HERESECOND", filteredStudents);
+        if (studentName.toLowerCase().includes(inputValue.toLowerCase())) {
+          studentArray.push(newStudent);
         }
       }
+      setfilteredStudents(studentArray);
+      console.log("HERESECOND", studentArray);
     }
   };
 
   return (
     <div id="imput_div">
-      <form onChange={changeStudent} >
+      <form onChange={changeStudent}>
         <input
           className="imput"
           type="text"
