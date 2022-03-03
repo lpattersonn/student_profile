@@ -80,11 +80,9 @@ export default function Student(props) {
               // Implement JQuery toggle to hide and show student grade list
               onClick={() => {
                 $(function () {
-                  $(".icon").on("click", function() {
-                    $(`#${id}`).toggle();
-                    $(`#${plusid}`).toggle();
-                    $(`#${minusid}`).toggle();
-                  });
+                  $(`#${id}`).toggle();
+                  $(`#${plusid}`).toggle();
+                  $(`#${minusid}`).toggle();
                 });
               }}
             >
