@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;700&display=swap');
 
 /* Imput feild style */
-.imput {
+.input {
   width: 100%;
   height: 39px;
   border: none;
@@ -21,7 +21,7 @@ input[type="text"]
   opacity: 1; /* Firefox */
 }
 
-#imput_div {
+#input_div {
   margin-left: 10px;
   margin-right: 10px;
 }

@@ -62,3 +62,9 @@ p {
   margin-top: 1px;
   margin-bottom: 1px;
 }
+
+.remove_grades {
+  opacity: 0%;
+  width: 0px;
+  height: 0px;
+}

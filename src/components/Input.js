@@ -33,10 +33,10 @@ export default function Input(props) {
   };
 
   return (
-    <div id="imput_div">
+    <div id="input_div">
       <form onChange={changeStudent}>
         <input
-          className="imput"
+          className="input"
           type="text"
           namne="search"
           value={inputValue}

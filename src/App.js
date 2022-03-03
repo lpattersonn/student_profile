@@ -21,6 +21,27 @@ function App() {
 
   console.log(students);
 
+  // // Change Grades
+  // const changeGrades = function (student, id) {
+
+  //   // Find plant
+  //   const updatedPlant = { ...student.find((profile) => profile.id === id) };
+  //   const updatedIndex = student.findIndex((profile) => profile.id === id);
+
+  //   // Get Plant last watered
+
+  //   // Find water interval from last watered
+  //   if (style === 30000) {
+  //     updatedPlant.lastWatered = day.toISOString().split("Z")[0];
+  //     plants[updatedIndex] = updatedPlant;
+  //     setPlants([...plants]);
+  //   } else {
+  //     window.confirm(
+  //       `${updatedPlant.name} is well watered, please wait 30 seconds.`
+  //     );
+  //   }
+  // };
+
   return (
     <div className="App">
       <Input
@@ -31,7 +52,6 @@ function App() {
         setInputValue={setInputValue}
       />
       <Student
-        key={students.length}
         students={students}
         filteredStudents={filteredStudents}
         inputValue={inputValue}

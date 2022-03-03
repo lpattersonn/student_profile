@@ -1,13 +1,16 @@
 // Imports
-import React from "react";
+import React, { useState } from "react";
 import "../Style/Students.css";
 import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
+import { render } from "@testing-library/react";
+import $ from "jquery"
+import ReactDOM from 'react-dom';
 
 // Student function for showing data from API
 export default function Student(props) {
-  const { filteredStudents, students, inputValue } = props;
 
-  console.log("HEREFIVE", filteredStudents);
+  const { filteredStudents, students, inputValue } = props;
 
   // Return student average
   const studentAverage = function (student) {
@@ -18,21 +21,73 @@ export default function Student(props) {
     return totalgrades / student.grades.length + "%";
   };
 
-   // Return student agrades
-   const studentGrades = (student) => {
+  // Return student agrades
+  const studentGrades = (student) => {
     let index = [];
     for (let i = 0; i < student.grades.length; i++) {
-     index.push(
-       <div className="student_grades">
-        <p>Test {i + 1}: {student.grades[i]}%</p>
-       </div>
-     )
-    } return index
+      index.push(
+        <p>
+          Test {i + 1}: {student.grades[i]}%
+        </p>
+      );
+    }
+    return index;
   };
-   
 
   // Map through student object and return data
   const studentList = students.map((student) => {
+    let style = "remove_grades";
+
+    // Local storage for change style
+    localStorage.setItem(student.firstName, "student_grades");
+
+    // Article style
+    const gradeStyle = {
+      fontSize: style === "student_grades" ? "15px" : "0px",
+      marginTop: style === "student_grades" ? "1px" : "0px",
+      marginBottom: style === "student_grades" ? "1px" : "0px",
+      opacity: style === "student_grades" ? "100%" : "0%",
+      width: style === "student_grades" ? "auto" : "0px",
+      height: style === "student_grades" ? "auto" : "0px",
+    };
+
+    // Changing icon
+    // const changeIcon = function () {
+    //   if (style === "remove_grades") {
+    //     return (
+    //       <div
+    //         onClick={() => {
+    //           $(`div.${student.firstName}`).click(function() {
+    //             $(`div.${student.firstName}`).removeClass("remove_grades");
+    //             $(`div.${student.firstName}`).setClass("student_grades ");
+    //         });
+    //         }}
+    //       >
+    //         <FaPlus className="icon" />
+    //       </div>
+    //     );
+    //   } else {
+    //     return (
+    //       <div
+    //         onClick={() => {
+    //           style = "remove_grades";
+    //           console.log("THIS IS STYLE", style);
+    //         }}
+    //       >
+    //         <FaMinus className="icon" />
+    //       </div>
+    //     );
+    //   }
+    // };
+    
+    const handleHide = () => {
+      const node = document.getElementById(student.fistName);
+      let el = ReactDOM.findDOMNode(node);
+      console.log(el);
+        el.opacity = '0%';
+        el.fontSize = "x-large";
+    }
+
     return (
       <article className="student_article">
         <section className="pic">
@@ -43,14 +98,17 @@ export default function Student(props) {
             <h1 className="student_name">
               {student.firstName.toUpperCase()} {student.lastName.toUpperCase()}
             </h1>
-            <FaPlus className="icon" />
+
+            <FaPlus className="icon" onClick={() => {
+              $()
+            }} />
           </div>
           <div className="student_info">
             <p>Email: {student.email}</p>
             <p>Company: {student.company}</p>
             <p>Skill: {student.skill}</p>
             <p>Average: {studentAverage(student)}</p>
-            {studentGrades(student)}
+            <div id={student.firstName} className={"student_grades"} >{studentGrades(student)}</div>
           </div>
         </section>
       </article>
@@ -59,6 +117,35 @@ export default function Student(props) {
 
   // For filtered student
   const filteredStudentObject = filteredStudents.map((filteredStudent) => {
+    let style = "remove_grades";
+    // Changing icon
+    const changeIcon = function (style) {
+      if (style === "remove_grades") {
+        return (
+          <div
+            key={style.length + 1}
+            onClick={() => {
+              style = "student_grades";
+            }}
+          >
+            <FaPlus key={style.length} className="icon" />
+          </div>
+        );
+      } else {
+        return (
+          <div
+            key={style.length}
+            onClick={() => {
+              style = "remove_grades";
+              console.log(style);
+            }}
+          >
+            <FaMinus className="icon" />
+          </div>
+        );
+      }
+    };
+
     return (
       <article className="student_article">
         <section className="pic">
@@ -70,14 +157,14 @@ export default function Student(props) {
               {filteredStudent.firstName.toUpperCase()}{" "}
               {filteredStudent.lastName.toUpperCase()}
             </h1>
-            <FaPlus className="icon" />
+            {changeIcon(style)}
           </div>
           <div className="student_info">
             <p>Email: {filteredStudent.email}</p>
             <p>Company: {filteredStudent.company}</p>
             <p>Skill: {filteredStudent.skill}</p>
             <p>Average: {studentAverage(filteredStudent)}</p>
-            {studentGrades(filteredStudent)}
+            <div className={style}>{studentGrades(filteredStudent)}</div>
           </div>
         </section>
       </article>
