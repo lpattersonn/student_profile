@@ -35,29 +35,6 @@ export default function Student(props) {
 
   // Map through student object and return data
   const studentList = students.map((student) => {
-    let style = "remove_grades";
-
-    // Local storage for change style
-    localStorage.setItem(student.firstName, "student_grades");
-
-    // Article style
-    const gradeStyle = {
-      fontSize: style === "student_grades" ? "15px" : "0px",
-      marginTop: style === "student_grades" ? "1px" : "0px",
-      marginBottom: style === "student_grades" ? "1px" : "0px",
-      opacity: style === "student_grades" ? "100%" : "0%",
-      width: style === "student_grades" ? "auto" : "0px",
-      height: style === "student_grades" ? "auto" : "0px",
-    };
-
-    const handleHide = () => {
-      const node = document.getElementById(student.fistName);
-      let el = ReactDOM.findDOMNode(node);
-      console.log(el);
-      el.opacity = "0%";
-      el.fontSize = "x-large";
-    };
-
     // Id for JQuery selectors
     const id = student.firstName;
 
@@ -106,34 +83,12 @@ export default function Student(props) {
 
   // For filtered student
   const filteredStudentObject = filteredStudents.map((filteredStudent) => {
-    let style = "remove_grades";
-    //  Changing icon
-    const changeIcon = function (style) {
-      if (style === "remove_grades") {
-        return (
-          <div
-            key={style.length + 1}
-            onClick={() => {
-              style = "student_grades";
-            }}
-          >
-            <FaPlus key={style.length} className="icon" />
-          </div>
-        );
-      } else {
-        return (
-          <div
-            key={style.length}
-            onClick={() => {
-              style = "remove_grades";
-              console.log(style);
-            }}
-          >
-            <FaMinus className="icon" />
-          </div>
-        );
-      }
-    };
+    // Id for JQuery selectors
+    const id = filteredStudent.firstName;
+
+    const plusid = id + "plus";
+
+    const minusid = id + "minus";
 
     return (
       <article className="student_article">
@@ -146,14 +101,29 @@ export default function Student(props) {
               {filteredStudent.firstName.toUpperCase()}{" "}
               {filteredStudent.lastName.toUpperCase()}
             </h1>
-            {changeIcon(style)}
+            <div
+              className="icon"
+              // Implement JQuery toggle to hide and show student grade list
+              onClick={() => {
+                $(function () {
+                  $(`#${id}`).toggle();
+                  $(`#${plusid}`).toggle();
+                  $(`#${minusid}`).toggle();
+                });
+              }}
+            >
+              <FaPlus id={plusid} />
+              <FaMinus id={minusid} style={{ display: "none" }} />
+            </div>
           </div>
           <div className="student_info">
             <p>Email: {filteredStudent.email}</p>
             <p>Company: {filteredStudent.company}</p>
             <p>Skill: {filteredStudent.skill}</p>
             <p>Average: {studentAverage(filteredStudent)}</p>
-            <div className={style}>{studentGrades(filteredStudent)}</div>
+            <div id={filteredStudent.firstName} className={"student_grades"}>
+              {studentGrades(student)}
+            </div>
           </div>
         </section>
       </article>
@@ -162,6 +132,7 @@ export default function Student(props) {
 
   return (
     <div>
+      {/* Render JSX based on the length of filteredStudents and inputValue */}
       {filteredStudents.length !== 0 && filteredStudentObject}
       {inputValue.length === 0 && studentList}
     </div>
