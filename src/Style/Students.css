@@ -53,6 +53,10 @@ img {
     align-items: flex-start;
 }
 
+.student_info .student_grades {
+  display: none;
+}
+
 p {
   margin-bottom: -8px;
 }
