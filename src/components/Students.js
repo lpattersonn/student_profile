@@ -11,7 +11,7 @@ import ReactDOM from "react-dom";
 export default function Student(props) {
   const [input, setInput] = useState("");
 
-  const { filteredStudents, students, setStudents, inputValue } = props;
+  const { filteredStudents, students, setStudents, inputValue, tagValue } = props;
 
   // Return student average
   const studentAverage = function (student) {
@@ -136,12 +136,36 @@ export default function Student(props) {
   // For filtered student
   const filteredStudentObject = filteredStudents.map(
     (filteredStudent, index) => {
-      // Id for JQuery selectors
+      // Id for selectors
       const id = filteredStudent.firstName;
 
       const plusid = id + "plus";
 
       const minusid = id + "minus";
+
+      const idToCheck = filteredStudent.id;
+
+      // Handle submit function for tag form
+      const handleChange = (inputText) => {
+        setInput(inputText);
+      };
+
+      // Update student array
+      const handleSubmit = (student, index) => {
+        if (input.length > 0) {
+          student.tag.push(input);
+          students[index] = student;
+          setStudents([...students]);
+          console.log(student.tag);
+        }
+      };
+
+      // Clear text
+      const inputId = filteredStudent.firstName + index;
+
+      const clearText = () => {
+        document.getElementById(`#${inputId}`).value = "";
+      };
 
       return (
         <article
@@ -180,6 +204,30 @@ export default function Student(props) {
               <div id={filteredStudent.firstName} className={"student_grades"}>
                 {studentGrades(filteredStudent)}
               </div>
+              <div className="tag_Class">
+                {/* Show Tags */}
+                {filteredStudent.tag.map((element) => {
+                  return <p>{element}</p>;
+                })}
+              </div>
+              <div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    e.target.reset();
+                    handleSubmit(filteredStudent, index);
+                  }}
+                >
+                  <input
+                    id={inputId}
+                    type="text"
+                    name="tag"
+                    className="text_input"
+                    placeholder="Add a tag"
+                    onChange={(e) => handleChange(e.target.value)}
+                  />
+                </form>
+              </div>
             </div>
           </section>
         </article>
@@ -190,8 +238,9 @@ export default function Student(props) {
   return (
     <div>
       {/* Render JSX based on the length of filteredStudents and inputValue */}
-      {filteredStudents.length !== 0 && filteredStudentObject}
-      {inputValue.length === 0 && studentList}
+      {filteredStudents.length !== 0 && tagValue.length === 0 && filteredStudentObject}
+      {filteredStudents.length === 0 && tagValue.length !== 0  && filteredStudentObject}
+      {inputValue.length === 0 && tagValue.length === 0  && studentList}
     </div>
   );
 }

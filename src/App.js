@@ -10,6 +10,7 @@ function App() {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setfilteredStudents] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [tagValue, setTagValue] = useState("")
 
   // Get data from api on every rerender using useEffect
   useEffect(() => {
@@ -26,20 +27,25 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App_maindiv">
       <Input
         filteredStudents={filteredStudents}
         setfilteredStudents={setfilteredStudents}
         students={students}
         inputValue={inputValue}
         setInputValue={setInputValue}
+        tagValue={tagValue}
+        setTagValue={setTagValue}
       />
+    <div className="App">
       <Student
         students={students}
         setStudents={setStudents}
         filteredStudents={filteredStudents}
         inputValue={inputValue}
+        tagValue={tagValue}
       />
+    </div>
     </div>
   );
 }

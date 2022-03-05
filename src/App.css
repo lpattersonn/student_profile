@@ -13,7 +13,7 @@ body {
 /* Style for App.js */
 
 .App {
-  margin-top: 11%;
+
   border: 1px solid rgb(245, 243, 243);
   border-radius: 10px;
   text-align: center;
@@ -27,4 +27,17 @@ body {
 
 .App::-webkit-scrollbar {
   display: none;
+}
+
+.App_maindiv {
+  margin-top: 11%;
+  border: 1px solid rgb(245, 243, 243);
+  border-radius: 10px;
+  text-align: center;
+  width: 750px;
+  height: 530px;
+  overflow: none;
+  background-color: white;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
