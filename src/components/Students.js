@@ -10,7 +10,6 @@ import ReactDOM from "react-dom";
 // Student function for showing data from API
 export default function Student(props) {
   const [input, setInput] = useState("");
-  const [studentArray, setStudentArray] = useState({});
 
   const { filteredStudents, students, setStudents, inputValue } = props;
 
@@ -49,17 +48,10 @@ export default function Student(props) {
 
     const idToCheck = student.id;
 
-    // Tag
-    let tagList = ["Tag"];
-
-    let inputValue = [...tagList];
-
     // Handle submit function for tag form
     const handleChange = (inputText) => {
       setInput(inputText);
     };
-
-    const updateTag = [...student.tag];
 
     // Update student array
     const handleSubmit = (student, index) => {
@@ -68,8 +60,14 @@ export default function Student(props) {
         students[index] = student;
         setStudents([...students]);
         console.log(student.tag);
-        setInput("")
       }
+    };
+
+    // Clear text
+    const inputId = student.firstName + index;
+
+    const clearText = () => {
+      document.getElementById(`#${inputId}`).value = "";
     };
 
     return (
@@ -115,10 +113,12 @@ export default function Student(props) {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  e.target.reset();
                   handleSubmit(student, index);
                 }}
               >
                 <input
+                  id={inputId}
                   type="text"
                   name="tag"
                   className="text_input"
