@@ -4,9 +4,9 @@
 
 Student profile is a single page web application that allows user to see student information such as name, avatar, company, skill and average, in addition to allowing users to add tags to specific profile.
 
-![app home page](#)
+![app home page](https://github.com/lpattersonn/student_profile/blob/master/public/home.png?raw=true)
 
-![app message page](#)
+![app with student grades](https://github.com/lpattersonn/student_profile/blob/master/public/grades.png?raw=true)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
