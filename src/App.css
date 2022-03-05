@@ -1,12 +1,13 @@
 /* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
 
 /* Main Body */
 body {
-  font-family: "Raleway";
+  font-family: "Raleway", sans-serif;
   display: flex;
   justify-content: center;
   background-color: rgb(228, 227, 227);
+  
 }
 
 /* Style for App.js */
@@ -20,8 +21,8 @@ body {
   height: 530px;
   overflow: auto;
   background-color: white;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .App::-webkit-scrollbar {

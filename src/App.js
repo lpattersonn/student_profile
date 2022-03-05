@@ -25,8 +25,6 @@ function App() {
     });
   }, []);
 
-  console.log(students);
-
   return (
     <div className="App">
       <Input

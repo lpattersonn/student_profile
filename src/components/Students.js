@@ -40,7 +40,6 @@ export default function Student(props) {
 
   // Map through student object and return data
   const studentList = students.map((student, index) => {
-
     // Id for selectors
     const id = student.firstName;
 
@@ -55,19 +54,21 @@ export default function Student(props) {
 
     let inputValue = [...tagList];
 
-    console.log("tag", tagList);
-
-    console.log("input", inputValue);
-
     // Handle submit function for tag form
     const handleChange = (inputText) => {
       setInput(inputText);
     };
 
+    const updateTag = [...student.tag];
+
     // Update student array
     const handleSubmit = (student, index) => {
       if (input.length > 0) {
-        ;
+        student.tag.push(input);
+        students[index] = student;
+        setStudents([...students]);
+        console.log(student.tag);
+        setInput("")
       }
     };
 
@@ -104,8 +105,7 @@ export default function Student(props) {
             <div id={student.firstName} className={"student_grades"}>
               {studentGrades(student)}
             </div>
-            <div>
-
+            <div className="tag_Class">
               {/* Show Tags */}
               {student.tag.map((element) => {
                 return <p>{element}</p>;
@@ -114,8 +114,7 @@ export default function Student(props) {
             <div>
               <form
                 onSubmit={(e) => {
-                  student.tag.push(input);
-                  setStudentArray({ ...student, tag });
+                  e.preventDefault();
                   handleSubmit(student, index);
                 }}
               >
@@ -137,7 +136,6 @@ export default function Student(props) {
   // For filtered student
   const filteredStudentObject = filteredStudents.map(
     (filteredStudent, index) => {
-      
       // Id for JQuery selectors
       const id = filteredStudent.firstName;
 
