@@ -3,15 +3,14 @@ import React, { useState } from "react";
 import "../Style/Students.css";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
-import { render } from "@testing-library/react";
 import $ from "jquery";
-import ReactDOM from "react-dom";
 
 // Student function for showing data from API
 export default function Student(props) {
   const [input, setInput] = useState("");
 
-  const { filteredStudents, students, setStudents, inputValue, tagValue } = props;
+  const { filteredStudents, students, setStudents, inputValue, tagValue } =
+    props;
 
   // Return student average
   const studentAverage = function (student) {
@@ -27,9 +26,10 @@ export default function Student(props) {
     let index = [];
     for (let i = 0; i < student.grades.length; i++) {
       index.push(
-        <p>
-          Test {i + 1}: {student.grades[i]}%
-        </p>
+        <div className="students_grades---List">
+          <p>Test {i + 1}:</p>
+          <p>{student.grades[i]}%</p>
+        </div>
       );
     }
     return index;
@@ -45,8 +45,6 @@ export default function Student(props) {
     const plusid = id + "plus";
 
     const minusid = id + "minus";
-
-    const idToCheck = student.id;
 
     // Handle submit function for tag form
     const handleChange = (inputText) => {
@@ -238,10 +236,16 @@ export default function Student(props) {
   return (
     <div>
       {/* Render JSX based on the length of filteredStudents and inputValue */}
-      {inputValue.length !== 0 && tagValue.length === 0 && filteredStudentObject}
-      {inputValue.length === 0 && tagValue.length !== 0  && filteredStudentObject}
-      {inputValue.length !== 0 && tagValue.length !== 0  && filteredStudentObject}
-      {inputValue.length === 0 && tagValue.length === 0  && studentList}
+      {inputValue.length !== 0 &&
+        tagValue.length === 0 &&
+        filteredStudentObject}
+      {inputValue.length === 0 &&
+        tagValue.length !== 0 &&
+        filteredStudentObject}
+      {inputValue.length !== 0 &&
+        tagValue.length !== 0 &&
+        filteredStudentObject}
+      {inputValue.length === 0 && tagValue.length === 0 && studentList}
     </div>
   );
 }
