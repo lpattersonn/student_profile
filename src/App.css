@@ -1,5 +1,5 @@
 /* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
 
 /* Main Body */
 body {
@@ -7,14 +7,12 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgb(228, 227, 227);
-  
 }
 
 /* Style for App.js */
 
 .App {
-
-  border: 1px solid rgb(245, 243, 243);
+  border: none;
   border-radius: 10px;
   text-align: center;
   width: 750px;
@@ -31,6 +29,7 @@ body {
 
 .App_maindiv {
   margin-top: 11%;
+  margin-bottom: 20%;
   border: 1px solid rgb(245, 243, 243);
   border-radius: 10px;
   text-align: center;
