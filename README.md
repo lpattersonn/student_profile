@@ -2,7 +2,7 @@
 
 ## About The Project
 
-Student profile is a single page web application that allows user to see student information such as name, avatar, company, skill and average, in addition to allowing users to add tags to specific profile.
+Student profile is a single page web application that allows user to see student information such as name, avatar, company, skill, average, in addition to allowing users to add tags to specific profile.
 
 ![app home page](https://github.com/lpattersonn/student_profile/blob/master/public/home.png?raw=true)
 
