@@ -6,33 +6,33 @@ import "../Style/Input.css";
 export default function Input(props) {
   const {
     students,
+    filteredStudents,
     setfilteredStudents,
     inputValue,
     setInputValue,
     tagValue,
     setTagValue,
   } = props;
-  
-  console.log("THIS IS TAGE VALUE",tagValue);
+
+  console.log("THIS IS TAGE VALUE", tagValue);
   // Filter students
   const changeStudent = () => {
     if (inputValue.length === 0) {
       setfilteredStudents([]);
     }
-    // if (inputValue.length !== 0 && tagValue.length === 0) {
-    //   let studentArray = [];
-    //   // loop through students array
-    //   for (let newStudent of students) {
-    //     let studentName = newStudent.firstName + " " + newStudent.lastName;
-    //     // match inputValue character with new student
-    //     if (studentName.toLowerCase().includes(inputValue.toLowerCase())) {
-    //       studentArray.push(newStudent);
-    //     }
-    //   }
-    //   setfilteredStudents(studentArray);
-    //   console.log("HERESECOND", studentArray);
-    // } 
-    if (tagValue.length !== 0 && inputValue.length === 0) {
+    if (inputValue.length !== 0 && tagValue.length === 0) {
+      let studentArray = [];
+      // loop through students array
+      for (let newStudent of students) {
+        let studentName = newStudent.firstName + " " + newStudent.lastName;
+        // match inputValue character with new student
+        if (studentName.toLowerCase().includes(inputValue.toLowerCase())) {
+          studentArray.push(newStudent);
+        }
+      }
+      setfilteredStudents(studentArray);
+      console.log("HERESECOND", studentArray);
+    } else if (tagValue.length !== 0 && inputValue.length === 0) {
       let studentTagArray = [];
       // loop through students array
       for (let studentsWithTag of students) {
@@ -45,21 +45,24 @@ export default function Input(props) {
       }
       setfilteredStudents(studentTagArray);
       console.log("HERESECOND", studentTagArray);
-    } 
-    // if (inputValue.length !== 0 && tagValue.length !== 0) {
-    //   let arrayStudentArray = [];
-    //   // loop through students array
-    //   for (let studentsWithTag of students) {
-    //     for (let tag of studentsWithTag.tag) {
-    //       // match tagValue character with students
-    //       if (tag.toLowerCase() == tagValue.toLowerCase()) {
-    //         arrayStudentArray.push(studentsWithTag);
-    //       }
-    //     }
-    //   }
-    //   setfilteredStudents(arrayStudentArray);
-    //   console.log("HERESECOND", arrayStudentArray);
-    // }
+      console.log("HERETHIRD", filteredStudents);
+    }
+    if (inputValue.length !== 0 && tagValue.length !== 0) {
+      let studentArray = [];
+      // loop through students array
+      for (let newStudent of students) {
+        let studentName = newStudent.firstName + " " + newStudent.lastName;
+        // match inputValue character with new student
+          for (let tag of newStudent.tag) {
+            // match tagValue character with students
+            if (studentName.toLowerCase().includes(inputValue.toLowerCase()) && tag.toLowerCase().includes(tagValue.toLowerCase())) {
+              studentArray.push(newStudent);
+            }
+          }
+      }
+      setfilteredStudents(studentArray);
+      console.log("HEREFOURTH", studentArray);
+    }
   };
 
   return (
@@ -80,12 +83,12 @@ export default function Input(props) {
         <input
           className="input"
           type="text"
-          namne="search"
+          name="search"
           value={tagValue}
           onChange={(e) => {
             setTagValue(e.target.value);
           }}
-          placeholder="Search by name"
+          placeholder="Search by tag"
         />
       </form>
     </div>

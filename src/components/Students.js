@@ -238,8 +238,9 @@ export default function Student(props) {
   return (
     <div>
       {/* Render JSX based on the length of filteredStudents and inputValue */}
-      {filteredStudents.length !== 0 && tagValue.length === 0 && filteredStudentObject}
-      {filteredStudents.length === 0 && tagValue.length !== 0  && filteredStudentObject}
+      {inputValue.length !== 0 && tagValue.length === 0 && filteredStudentObject}
+      {inputValue.length === 0 && tagValue.length !== 0  && filteredStudentObject}
+      {inputValue.length !== 0 && tagValue.length !== 0  && filteredStudentObject}
       {inputValue.length === 0 && tagValue.length === 0  && studentList}
     </div>
   );
