@@ -4,7 +4,7 @@ import { studentAverage, studentGrades } from "../../helper_function/helper_func
 
 // Tests from studentAverage function
 describe("studentAverage", () => {
-  it("Returns the expected result", () => {
+  it("Returns the expected grade average", () => {
     const student = {
       grades: [87, 90, 89, 100, 92]
     }
@@ -14,7 +14,7 @@ describe("studentAverage", () => {
 
 // Test for studentGrades function
 describe("studentGrades", () => {
-  it("Returns the expected result", () => {
+  it("Returns the expected number of inputs", () => {
     const student = {
       grades: [87]
     }
