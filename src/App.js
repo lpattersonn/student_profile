@@ -14,6 +14,7 @@ function App() {
 
   // Get data from api on every rerender using useEffect
   useEffect(() => {
+    if (localStorage.getItem("students") === null) {
     axios.get("https://api.hatchways.io/assessment/students").then((res) => {
       // Append tag key value pair to student profile API
       const newStudentArray = res.data.students.map((element) => ({
@@ -22,6 +23,10 @@ function App() {
       }));
       setStudents([...newStudentArray]);
     });
+  } else {
+    const studentsArray = JSON.parse(localStorage.getItem("students"))
+    setStudents(studentsArray)
+  }
   }, []);
 
   return (

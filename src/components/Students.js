@@ -35,7 +35,8 @@ export default function Student(props) {
       if (input.length > 0) {
         student.tag.push(input);
         students[index] = student;
-        setStudents([...students]);
+        localStorage.setItem("students", JSON.stringify([...students]))
+        setStudents(JSON.parse(localStorage.getItem("students")));
       }
     };
 
