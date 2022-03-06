@@ -10,18 +10,16 @@ function App() {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setfilteredStudents] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [tagValue, setTagValue] = useState("")
+  const [tagValue, setTagValue] = useState("");
 
   // Get data from api on every rerender using useEffect
   useEffect(() => {
     axios.get("https://api.hatchways.io/assessment/students").then((res) => {
-      console.log(res);
       // Append tag key value pair to student profile API
       const newStudentArray = res.data.students.map((element) => ({
         ...element,
         tag: [],
       }));
-      console.log("THIS IS THE ARRAY", newStudentArray);
       setStudents([...newStudentArray]);
     });
   }, []);
@@ -29,7 +27,6 @@ function App() {
   return (
     <div className="App_maindiv">
       <Input
-        filteredStudents={filteredStudents}
         setfilteredStudents={setfilteredStudents}
         students={students}
         inputValue={inputValue}
@@ -37,15 +34,15 @@ function App() {
         tagValue={tagValue}
         setTagValue={setTagValue}
       />
-    <div className="App">
-      <Student
-        students={students}
-        setStudents={setStudents}
-        filteredStudents={filteredStudents}
-        inputValue={inputValue}
-        tagValue={tagValue}
-      />
-    </div>
+      <div className="App">
+        <Student
+          students={students}
+          setStudents={setStudents}
+          filteredStudents={filteredStudents}
+          inputValue={inputValue}
+          tagValue={tagValue}
+        />
+      </div>
     </div>
   );
 }

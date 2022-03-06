@@ -4,6 +4,10 @@ import "../Style/Students.css";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import $ from "jquery";
+import {
+  studentAverage,
+  studentGrades,
+} from "../helper_function/helper_functions.js";
 
 // Student function for showing data from API
 export default function Student(props) {
@@ -11,31 +15,6 @@ export default function Student(props) {
 
   const { filteredStudents, students, setStudents, inputValue, tagValue } =
     props;
-
-  // Return student average
-  const studentAverage = function (student) {
-    let totalgrades = 0;
-    for (let grade of student.grades) {
-      totalgrades += Number(grade);
-    }
-    return totalgrades / student.grades.length + "%";
-  };
-
-  // Return student agrades
-  const studentGrades = (student) => {
-    let index = [];
-    for (let i = 0; i < student.grades.length; i++) {
-      index.push(
-        <div className="students_grades---List">
-          <p>Test {i + 1}:</p>
-          <p>{student.grades[i]}%</p>
-        </div>
-      );
-    }
-    return index;
-  };
-
-  // Replace student profile object
 
   // Map through student object and return data
   const studentList = students.map((student, index) => {
@@ -57,16 +36,11 @@ export default function Student(props) {
         student.tag.push(input);
         students[index] = student;
         setStudents([...students]);
-        console.log(student.tag);
       }
     };
 
     // Clear text
     const inputId = student.firstName + index;
-
-    const clearText = () => {
-      document.getElementById(`#${inputId}`).value = "";
-    };
 
     return (
       <article key={student.id.toString()} className="student_article">
@@ -154,16 +128,11 @@ export default function Student(props) {
           student.tag.push(input);
           students[index] = student;
           setStudents([...students]);
-          console.log(student.tag);
         }
       };
 
       // Clear text
       const inputId = filteredStudent.firstName + index;
-
-      const clearText = () => {
-        document.getElementById(`#${inputId}`).value = "";
-      };
 
       return (
         <article

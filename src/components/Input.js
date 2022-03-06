@@ -6,7 +6,6 @@ import "../Style/Input.css";
 export default function Input(props) {
   const {
     students,
-    filteredStudents,
     setfilteredStudents,
     inputValue,
     setInputValue,
@@ -14,10 +13,9 @@ export default function Input(props) {
     setTagValue,
   } = props;
 
-  console.log("THIS IS TAGE VALUE", tagValue);
   // Filter students
   const changeStudent = () => {
-    if (inputValue.length === 0) {
+    if (inputValue.length === 0 && tagValue.length === 0) {
       setfilteredStudents([]);
     }
     if (inputValue.length !== 0 && tagValue.length === 0) {
@@ -31,7 +29,6 @@ export default function Input(props) {
         }
       }
       setfilteredStudents(studentArray);
-      console.log("HERESECOND", studentArray);
     } else if (tagValue.length !== 0 && inputValue.length === 0) {
       let studentTagArray = [];
       // loop through students array
@@ -44,8 +41,6 @@ export default function Input(props) {
         }
       }
       setfilteredStudents(studentTagArray);
-      console.log("HERESECOND", studentTagArray);
-      console.log("HERETHIRD", filteredStudents);
     }
     if (inputValue.length !== 0 && tagValue.length !== 0) {
       let studentArray = [];
@@ -53,15 +48,17 @@ export default function Input(props) {
       for (let newStudent of students) {
         let studentName = newStudent.firstName + " " + newStudent.lastName;
         // match inputValue character with new student
-          for (let tag of newStudent.tag) {
-            // match tagValue character with students
-            if (studentName.toLowerCase().includes(inputValue.toLowerCase()) && tag.toLowerCase().includes(tagValue.toLowerCase())) {
-              studentArray.push(newStudent);
-            }
+        for (let tag of newStudent.tag) {
+          // match tagValue character with students
+          if (
+            studentName.toLowerCase().includes(inputValue.toLowerCase()) &&
+            tag.toLowerCase().includes(tagValue.toLowerCase())
+          ) {
+            studentArray.push(newStudent);
           }
+        }
       }
       setfilteredStudents(studentArray);
-      console.log("HEREFOURTH", studentArray);
     }
   };
 
