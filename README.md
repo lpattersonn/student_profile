@@ -26,15 +26,13 @@ Student profile is a single page web application that allows user to see student
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/lpattersonn/student_profile.git
-   ```
+1. While in terminal, cd to the project folder
+
 2. Install NPM packages
    ```sh
-   npm i
+   npm install
    ```
-3. In your terminal while in the cloned student_profile project directory enter the following command
+3. In your terminal while in the student_profile project directory enter the following command
    ```sh
    npm start
    ```
