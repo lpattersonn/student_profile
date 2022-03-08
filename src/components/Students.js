@@ -116,8 +116,6 @@ export default function Student(props) {
 
       const minusid = id + "minus";
 
-      const idToCheck = filteredStudent.id;
-
       // Handle submit function for tag form
       const handleChange = (inputText) => {
         setInput(inputText);
