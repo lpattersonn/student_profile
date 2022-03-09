@@ -1,3 +1,4 @@
+// @flow
 // Imports
 import React, { useState } from "react";
 import "../Style/Students.css";
@@ -18,7 +19,7 @@ export default function Student(props) {
 
   // Map through student object and return data
   const studentList = students.map((student, index) => {
-    // Id for selectors
+    
     const id = student.firstName;
 
     const plusid = id + "plus";
